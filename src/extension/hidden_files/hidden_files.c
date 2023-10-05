@@ -13,7 +13,7 @@
 #include "path/path.h"
 
 /* Change the HIDDEN_PREFIX to change which files are hidden */
-#define HIDDEN_PREFIX ".proot"
+#define HIDDEN_PREFIX ".proot."
 
 struct linux_dirent {
     unsigned long d_ino;
