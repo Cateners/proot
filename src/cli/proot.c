@@ -335,6 +335,29 @@ static int handle_option_p(Tracee *tracee, const Cli *cli UNUSED, const char *va
         return 0;
 }
 
+#include "execve/binfmt.h"
+
+static int handle_option_binfmt(int pos, const char *value) {
+	strcpy(default_binfmt_entries[pos].interpreter, value);
+	binfmt_max_magic_length = default_binfmt_entries[pos].length > binfmt_max_magic_length ? default_binfmt_entries[pos].length : binfmt_max_magic_length;
+	return 0;
+}
+
+static int handle_option_binfmt_x86(Tracee *tracee, const Cli *cli, const char *value)
+{
+	return handle_option_binfmt(0, value);
+}
+
+static int handle_option_binfmt_x64(Tracee *tracee, const Cli *cli, const char *value)
+{
+	return handle_option_binfmt(1, value);
+}
+
+static int handle_option_binfmt_wine(Tracee *tracee, const Cli *cli, const char *value)
+{
+	return handle_option_binfmt(2, value);
+}
+
 /**
  * Initialize @tracee->qemu.
  */

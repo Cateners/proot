@@ -67,6 +67,9 @@ static int handle_option_kill_on_exit(Tracee *tracee, const Cli *cli, const char
 static int handle_option_L(Tracee *tracee, const Cli *cli, const char *value);
 static int handle_option_H(Tracee *tracee, const Cli *cli, const char *value);
 static int handle_option_p(Tracee *tracee, const Cli *cli, const char *value);
+static int handle_option_binfmt_x86(Tracee *tracee, const Cli *cli, const char *value);
+static int handle_option_binfmt_x64(Tracee *tracee, const Cli *cli, const char *value);
+static int handle_option_binfmt_wine(Tracee *tracee, const Cli *cli, const char *value);
 
 static int pre_initialize_bindings(Tracee *, const Cli *, size_t, char *const *, size_t);
 static int post_initialize_exe(Tracee *, const Cli *, size_t, char *const *, size_t);
@@ -283,6 +286,30 @@ Copyright (C) 2015 STMicroelectronics, licensed under GPL v2 or later.",
           .handler = handle_option_L,
           .description = "Correct the size returned from lstat for symbolic links.",
           .detail = "",
+        },
+        { .class = "Extension options",
+          .arguments = {
+                { .name = "--x86", .separator = '=', .value = "path" },
+                { .name = NULL, .separator = '\0', .value = NULL } },
+          .handler = handle_option_binfmt_x86,
+          .description = "Bind interpreter for x86 elfs like binfmt_misc does.",
+          .detail = "Example: --x86=/usr/bin/box86",
+        },
+        { .class = "Extension options",
+          .arguments = {
+                { .name = "--x64", .separator = '=', .value = "path" },
+                { .name = NULL, .separator = '\0', .value = NULL } },
+          .handler = handle_option_binfmt_x64,
+          .description = "Bind interpreter for x64 elfs like binfmt_misc does.",
+          .detail = "Example: --x64=/usr/bin/box64",
+        },
+        { .class = "Extension options",
+          .arguments = {
+                { .name = "--wine", .separator = '=', .value = "path" },
+                { .name = NULL, .separator = '\0', .value = NULL } },
+          .handler = handle_option_binfmt_wine,
+          .description = "Bind interpreter for windows executables like binfmt_misc does.",
+          .detail = "Example: --wine=/usr/bin/wine64",
         },
 	{ .class = "Alias options",
 	  .arguments = {

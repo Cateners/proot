@@ -22,6 +22,7 @@ OBJECTS += \
 	cli/cli.o		\
 	cli/proot.o		\
 	cli/note.o		\
+	execve/binfmt.o \
 	execve/enter.o		\
 	execve/exit.o		\
 	execve/shebang.o	\
@@ -73,7 +74,7 @@ OBJECTS += \
 	extension/fake_id0/symlink.o \
 	extension/fake_id0/mk.o \
 	extension/fake_id0/stat.o \
-        extension/fake_id0/helper_functions.o \
+    extension/fake_id0/helper_functions.o \
 	extension/fake_id0/fake_id0.o \
 	extension/hidden_files/hidden_files.o \
 	extension/port_switch/port_switch.o \

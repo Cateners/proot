@@ -32,6 +32,7 @@
 #include <stdio.h>      /* fwrite(3), */
 #include <assert.h>     /* assert(3), */
 
+#include "execve/binfmt.h"
 #include "execve/execve.h"
 #include "execve/shebang.h"
 #include "execve/aoxp.h"
@@ -651,6 +652,12 @@ int translate_execve_enter(Tracee *tracee)
 	tracee->skip_proot_loader = false;
 	if (tracee->qemu != NULL) {
 		status = expand_runner(tracee, host_path, user_path);
+		if (status < 0)
+			return status;
+	}
+
+	if (binfmt_max_magic_length > 0) {
+		status = expand_binfmt_interpreter(tracee, host_path, user_path);
 		if (status < 0)
 			return status;
 	}
