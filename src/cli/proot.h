@@ -6,7 +6,7 @@
 #include "cli/cli.h"
 
 #ifndef VERSION
-#define VERSION "5.1.0"
+#define VERSION "5.1.0-tiny-1.0.12"
 #endif
 
 static const char *recommended_bindings[] = {
@@ -287,29 +287,29 @@ Copyright (C) 2015 STMicroelectronics, licensed under GPL v2 or later.",
           .description = "Correct the size returned from lstat for symbolic links.",
           .detail = "",
         },
-        { .class = "Extension options",
+        { .class = "Regular options",
           .arguments = {
                 { .name = "--x86", .separator = '=', .value = "path" },
                 { .name = NULL, .separator = '\0', .value = NULL } },
           .handler = handle_option_binfmt_x86,
           .description = "Bind interpreter for x86 elfs like binfmt_misc does.",
-          .detail = "Example: --x86=/usr/bin/box86",
+          .detail = "\tExample: --x86=/usr/bin/box86",
         },
-        { .class = "Extension options",
+        { .class = "Regular options",
           .arguments = {
                 { .name = "--x64", .separator = '=', .value = "path" },
                 { .name = NULL, .separator = '\0', .value = NULL } },
           .handler = handle_option_binfmt_x64,
           .description = "Bind interpreter for x64 elfs like binfmt_misc does.",
-          .detail = "Example: --x64=/usr/bin/box64",
+          .detail = "\tExample: --x64=/usr/bin/box64",
         },
-        { .class = "Extension options",
+        { .class = "Regular options",
           .arguments = {
                 { .name = "--wine", .separator = '=', .value = "path" },
                 { .name = NULL, .separator = '\0', .value = NULL } },
           .handler = handle_option_binfmt_wine,
           .description = "Bind interpreter for windows executables like binfmt_misc does.",
-          .detail = "Example: --wine=/usr/bin/wine64",
+          .detail = "\tExample: --wine=/usr/bin/wine64",
         },
 	{ .class = "Alias options",
 	  .arguments = {
