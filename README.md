@@ -1,5 +1,9 @@
 proot
 =====
-[![Travis build status](https://travis-ci.org/termux/proot.svg?branch=master)](https://travis-ci.org/termux/proot)
 
-This is a copy of [the PRoot project](https://github.com/proot-me/PRoot/) with patches applied to work better under [Termux](https://termux.com).
+This is a copy of [the PRoot project](https://github.com/termux/proot/) with patches applied to work better under [Tiny Computer](https://github.com/Cateners/tiny_computer).
+
+Features:
+
+- binfmt_misc-like support:
+  - Use --x86, --x64 and --wine options to specify interpreter for x86, x64 elfs and windows executables.
